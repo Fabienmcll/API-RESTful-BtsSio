@@ -6,19 +6,23 @@ import { Schemas, ValidateJoi } from '../middleware/Joi'; // Import du middlewar
 const router = express.Router();
 
 // Définition des routes pour les employés en utilisant les fonctions du contrôleur
+// Obtenir les employés avec un animal associé
+router.get('/employesWithAnimal', EmployeController.getEmployesWithAnimal);
 router.post('/', EmployeController.createEmploye);
 router.get('/', EmployeController.readAllEmploye);
 router.get('/:employeId', EmployeController.readEmploye);
 router.put('/:employeId', EmployeController.updateEmploye);
-router.patch('/:employeId',  EmployeController.updateEmploye);
+router.patch('/:employeId', EmployeController.updateEmploye);
 router.delete('/:employeId', EmployeController.deleteEmploye);
-// calculer l'age d'un employé
-router.get('/:employeId/age', EmployeController.calculerAge);
-// affecter un animal à un employé
-router.post('/:employeId/addAnimal/:animalId', EmployeController.affecterAnimal);
-// retirer un animal à un employé
-router.post('/:employeId/removeAnimal/:animalId', EmployeController.retirerAnimal);
 
+// Calculer l'âge d'un employé
+router.get('/:employeId/age', EmployeController.calculerAge);
+
+// Affecter un animal à un employé
+router.post('/:employeId/addAnimal/:animalId', EmployeController.affecterAnimal);
+
+// Retirer un animal à un employé
+router.post('/:employeId/removeAnimal/:animalId', EmployeController.retirerAnimal);
 
 
 

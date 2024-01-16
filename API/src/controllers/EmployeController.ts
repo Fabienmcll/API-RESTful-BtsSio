@@ -128,6 +128,14 @@ const animalObjectId = new mongoose.Types.ObjectId(animalId); // Création d'un 
         .catch((error) => res.status(500).json({ error })); // Gestion des erreurs
 };
 
+// Fonction pour retourner les employés avec un animal      
+const getEmployesWithAnimal = async (req: Request, res: Response, next: NextFunction) => {
+    
+    return Employe.find({ "LesAnimaux.0": { $exists: true } }).populate('LesAnimaux') // Recherche de l'employé correspondant dans la base de données
+        .then((employe) => (employe ? res.status(200).json({ employe }) : res.status(404).json({ message: 'Employé non trouvé' }))) // Réponse avec les détails de l'employé ou un message d'erreur
+        .catch((error) => res.status(500).json({ error })); // Gestion des erreurs
+};
+
 
 // Export des fonctions du contrôleur
-export default { createEmploye, readEmploye, readAllEmploye, updateEmploye, deleteEmploye, affecterAnimal, retirerAnimal, calculerAge };
+export default { createEmploye, readEmploye, readAllEmploye, updateEmploye, deleteEmploye, affecterAnimal, retirerAnimal, calculerAge, getEmployesWithAnimal };
