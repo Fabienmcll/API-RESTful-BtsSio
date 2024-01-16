@@ -60,5 +60,19 @@ const deleteAnimal = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error })); // Gestion des erreurs
 };
 
+// Fonction qui trouve  l'animal qui s'appelle "Max"
+const findMax = (req: Request, res: Response, next: NextFunction) => {
+    return Animal.find({ nom: 'Max' })
+        .populate('employe')
+         .then((animal) => res.status(200).json({ animal }))
+        .catch((error) => res.status(500).json({ error }));
+       
+};
+
+
+
+
+
+
 // Export des fonctions du contrôleur
-export default { createAnimal, readAnimal, readAllAnimal, updateAnimal, deleteAnimal };
+export default { createAnimal, readAnimal, readAllAnimal, updateAnimal, deleteAnimal, findMax };

@@ -8,6 +8,10 @@ const router = express.Router();
 // Définition des routes pour les employés en utilisant les fonctions du contrôleur
 // Obtenir les employés avec un animal associé
 router.get('/employesWithAnimal', EmployeController.getEmployesWithAnimal);
+// Fonction pour retourner les employés avec des chiens
+router.get('/employesWithDog', EmployeController.getEmployesWithDogs);
+// Obtenir le nombre d'employes
+router.get('/employesCount', EmployeController.countEmploye);
 router.post('/', EmployeController.createEmploye);
 router.get('/', EmployeController.readAllEmploye);
 router.get('/:employeId', EmployeController.readEmploye);

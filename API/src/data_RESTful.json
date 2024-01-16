@@ -26,14 +26,14 @@
             "nom": "Williams",
             "prenom": "Emily",
             "dateNaissance": "1995-08-25",
-            "LesAnimaux": ["3"]
+            "LesAnimaux": [""]
         },
         {
             "_id": "5",
             "nom": "Brown",
             "prenom": "Michael",
             "dateNaissance": "1985-03-18",
-            "LesAnimaux": ["1"]
+            "LesAnimaux": ["6"]
         },
         {
             "_id": "6",

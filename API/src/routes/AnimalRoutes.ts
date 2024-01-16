@@ -6,6 +6,7 @@ import { Schemas, ValidateJoi } from '../middleware/Joi'; // Import du middlewar
 const router = express.Router();
 
 // Définition des routes sur les animaux en utilisant les fonctions du contrôleur
+router.get('/max', AnimalController.findMax);
 router.post('/', AnimalController.createAnimal);
 router.get('/', AnimalController.readAllAnimal);
 router.get('/:animalId', AnimalController.readAnimal);

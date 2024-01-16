@@ -49,4 +49,5 @@ EmployeSchema.methods.retirerAnimal = function(animalId:mongoose.Types.ObjectId)
    
 };
 
+
 export default mongoose.model<EmployeModel>('Employe', EmployeSchema);

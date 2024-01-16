@@ -136,6 +136,54 @@ const getEmployesWithAnimal = async (req: Request, res: Response, next: NextFunc
         .catch((error) => res.status(500).json({ error })); // Gestion des erreurs
 };
 
+// Fonction pour retourner le nombre d'employés
+const countEmploye = (req: Request, res: Response, next: NextFunction) => {
+    return Employe.countDocuments() // Count the number of employees in the database
+        .then((count) => res.status(200).json({ count })) // Respond with the count of employees
+        .catch((error) => res.status(500).json({ error })); // Error handling
+};
+
+const getEmployesWithDogs = (req: Request, res: Response, next: NextFunction) => {
+    Employe.aggregate([
+        {
+            $match: {
+                'LesAnimaux.0': { $exists: true }  // Filtrez les employés ayant au moins un animal
+            }
+        },
+        {
+            $lookup: {
+                from: 'animals',  // Nom de la collection à joindre
+                localField: 'LesAnimaux',  // Champ local contenant les références à Animal
+                foreignField: '_id',  // Champ dans la collection Animal
+                as: 'animauxDetails'  // Nom du champ dans le résultat contenant les détails de l'animal
+            }
+        },
+        {
+            $match: {
+                'animauxDetails.espece': '1'  // Filtrez les animaux avec espece égal à '1' (Chien)
+            }
+        },
+        {
+            $project: {
+                nom: 1,
+                prenom: 1,
+                dateNaissance: 1,
+                LesAnimaux: '$animauxDetails'
+            }
+        }
+    ]).exec()
+        .then((employes) => {
+            if (employes.length > 0) {
+                res.status(200).json({ employes });
+            } else {
+                res.status(404).json({ message: 'Aucun employé avec des chiens trouvé' });
+            }
+        })
+        .catch((error) => res.status(500).json({ error }));
+};
+
+
+
 
 // Export des fonctions du contrôleur
-export default { createEmploye, readEmploye, readAllEmploye, updateEmploye, deleteEmploye, affecterAnimal, retirerAnimal, calculerAge, getEmployesWithAnimal };
+export default { createEmploye, readEmploye, readAllEmploye, updateEmploye, deleteEmploye, affecterAnimal, retirerAnimal, calculerAge, getEmployesWithAnimal, countEmploye, getEmployesWithDogs};
