@@ -1,0 +1,105 @@
+{
+    "employes": [
+        {
+            "_id": "1",
+            "nom": "Smith",
+            "prenom": "John",
+            "dateNaissance": "1990-01-15",
+            "LesAnimaux": ["1", "2"]
+        },
+        {
+            "_id": "2",
+            "nom": "Doe",
+            "prenom": "Jane",
+            "dateNaissance": "1992-05-20",
+            "LesAnimaux": ["3"]
+        },
+        {
+            "_id": "3",
+            "nom": "Johnson",
+            "prenom": "Robert",
+            "dateNaissance": "1988-11-10",
+            "LesAnimaux": ["4"]
+        },
+        {
+            "_id": "4",
+            "nom": "Williams",
+            "prenom": "Emily",
+            "dateNaissance": "1995-08-25",
+            "LesAnimaux": ["3"]
+        },
+        {
+            "_id": "5",
+            "nom": "Brown",
+            "prenom": "Michael",
+            "dateNaissance": "1985-03-18",
+            "LesAnimaux": ["1"]
+        },
+        {
+            "_id": "6",
+            "nom": "Davis",
+            "prenom": "Alice",
+            "dateNaissance": "1993-09-12",
+            "LesAnimaux": []
+        }
+    ],
+    "especes": [
+        {
+            "_id": "1",
+            "nom": "Chien"
+        },
+        {
+            "_id": "2",
+            "nom": "Chat"
+        },
+        {
+            "_id": "3",
+            "nom": "Oiseau"
+        }
+    ],
+    "animals": [
+        {
+            "_id": "1",
+            "nom": "Felix",
+            "espece": "2",
+            "employe":"1"
+
+            
+        },
+        {
+            "_id": "2",
+            "nom": "Max",
+            "espece": "1",
+            "employe":"1"
+
+        },
+        {
+            "_id": "3",
+            "nom": "Tweetie",
+            "espece": "3",
+            "employe":"2"
+            
+        },
+        {
+            "_id": "4",
+            "nom": "Buddy",
+            "espece": "1",
+            "employe":"3"
+            
+        },
+        {
+            "_id": "5",
+            "nom": "Whiskers",
+            "espece": "2",
+            "employe":""
+            
+        },
+        {
+            "_id": "6",
+            "nom": "Charlie",
+            "espece": "3",
+            "employe":"5"
+           
+        }
+    ]
+}
